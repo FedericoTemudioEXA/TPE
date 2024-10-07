@@ -151,6 +151,82 @@ header {
 }
 
 
+.container{
+  display: grid;
+  place-items: center;
+  margin-inline: 1.5rem;
+  padding-block: 5rem;
+  height: 100vh;
+}
+
+.card{
+  display: grid;
+  column-gap: 3.5rem;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.card_article{
+  position: relative;
+  overflow: hidden
+}
+
+.card_article img{
+  width: 348px;
+  border-radius: 1.5rem;
+}
+
+.card-info{
+  width: 316px;
+  background-color: #0f63a0;
+  padding-inline: 2.5rem;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 8px 24px hsla(0, 0%, 0%, .15);
+  border-radius: 1rem;
+  position: absolute;
+  bottom: -9rem;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  opacity: 0;
+  transition: opacity 1s 1s;
+
+}
+
+.precio{
+  display: block;
+  font-size: var(--small-font-size);
+  margin-bottom: .25rem;
+}
+
+.titulo{
+  font-size: var(--h2-font-size);
+  font-weight: 500;
+  margin-bottom: .75rem;
+}
+
+.card_article:hover .card-info{
+  animation: show-data 1s forwards;
+  opacity: 1;
+  transition: opacity .3s;
+}
+
+.card_article:hover {
+  animation: remove-overflow 2s forwards;  
+}
+
+@keyframes show-data {
+  50%{
+    transform: translateY(-10rem);
+  }
+  100%{
+    transform: translateY(-7rem);
+  }
+}
+  @keyframes remove-overflow {
+    to{
+      overflow: initial;
+    }
+  }
 
 
 /*Footer*/
