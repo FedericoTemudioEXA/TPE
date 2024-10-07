@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/validar.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="menu-hamburguesa">
+            <input type="checkbox" hidden="hidden" id="menu-toggle">
+            <label for="menu-toggle" class="menu-icon">&#9776;</label>
+            
+            <nav class="nav">
+                <ul>
+                    <li><a href="#">Todos los juegos</a></li>
+                    <li><a href="#">Accion</a></li>
+                    <li><a href="#">Aventura</a></li>
+                    <li><a href="#">Estrategias</a></li>
+                    <li><a href="#">Carreras</a></li>
+                    <li><a href="#">Deportes</a></li>
+                    <li><a href="#">Futbol</a></li>
+                    <li><a href="#">Fantasia</a></li>
+                    <li><a href="#">Shooter</a></li>
+                    <li><a href="#">Cartas</a></li>
+                    <li><a href="#">2 Jugadores</a></li>
+                    <li><a href="#">Puzzle</a></li>
+                    <li><a href="#">Arcade</a></li>
+                    <li><a href="#">Clasicos</a></li>
+                    <li><a href="#">Nuevos</a></li>
+
+                </ul>
+            </nav>
+            <img class="logo" src="img/logo.jpg" alt="">
+        </div>
+
+        <div class="barra-busq">
+            <input type="text" placeholder="Buscar...">
+            <img class="lupa" src="img/lupa.png" alt="lupa">
+        </div>
+        <div class="usuario">
+            <input type="checkbox" hidden="hidden"  id="login-toggle">
+            <label for="login-toggle" class="button">
+                <span class="user-img">
+                    <img src="img/UserLoged.png" alt="">
+                </span>
+            </label>
+            <div class="desplegado">
+                <ul class="ListUser">
+                    <li><a href="" rel="nofollow" class="fa-user">&#9733 Mi Cuenta</a></li>
+                    <li><a href="" rel="nofollow" class="fa-edit">&#9998 Editar Perfil</a></li>
+                    <li><a href="" rel="nofollow" class="LogOut fa-power-off">&#10006 CERRAR SESION</a></li>
+                </ul>
+    </header>
+
+    <form action="" id="login">
+        <h2>Log in</h2>
+
+        <label id="email" for="">Email:</label>
+        <input class="form-inpt" type="email" placeholder="&#9993 Email" required>
+    
+        <label id="cont">contraseña*</label>
+        <input id="password" class="form-inpt" type="password" placeholder="********" required>
+
+        <button id="enviar">
+            <span> ENVIAR</span> 
+        </button>
+        <br>
+        <div class="other">
+        <a>Login with Google</a>
+        <a>Login with Facebook</a>
+        </div>
+        <br>
+        <br>
+        <a href="registro.html">Crear cuenta</a>
+    </form>
+
+</body>
+</html>

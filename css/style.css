@@ -31,10 +31,16 @@ header {
     padding: 10px 20px;
     background-color: #084572;
     color: white;
-    z-index: -1;
   }
-  
-  header>.usuario>.desplegado{
+  .usuario{
+    padding-left: 200px;
+  }
+  .user-img img{
+    width: 50px;
+    border-radius: 100%;
+    margin-top: 10px;
+  }
+  .usuario .desplegado{
     display: none;
     position: absolute;
     left: auto;
@@ -47,14 +53,7 @@ header {
     border-radius: 10%;
     border: 2px solid #E6B217;
   }
-  li>a{
-    font-size: 20px;
-    font-family: Roboto;
-  }
-  #login-toggle:checked + .button + .desplegado {
-    display: block;
-  }
-  header>.usuario>.desplegado:before {
+  .usuario .desplegado:before {
     content: '';
     position: absolute;
     left: 175px;
@@ -67,6 +66,14 @@ header {
     border-bottom: 5px solid #0f63a0
   
   }
+  li>a{
+    font-size: 20px;
+    font-family: Roboto;
+  }
+  #login-toggle:checked + .button + .desplegado,#menu-toggle:checked + .menu-icon + .nav {
+    display: block;
+  }
+  
   
   
   
@@ -117,10 +124,7 @@ header {
     font-size: 16px;
 }
 
-  
-  #menu-toggle:checked + .menu-icon + .nav {
-    display: block;
-  }
+
 
 
   .lupa{
@@ -141,7 +145,7 @@ header {
     border-radius: 20px;
     outline: 0;
     font-size: 20px;
-    width: 350px;
+    width: 450px;
   border-radius: 20px;
 }
 
@@ -303,3 +307,97 @@ footer {
 .social-network img{
     width: 100%
 }
+
+
+/*Form*/
+/* FORMS */
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background-color: rgba(8, 69, 114, 1);
+  width: 500px;
+  margin: auto;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 30px;
+  margin-top: 5%;
+  border-radius: 74px;
+}
+
+form form > img {
+  align-self: center;
+  width: fit-content;
+  height: 100px;
+}
+figure img {
+  margin: auto;
+}
+.img1 img {
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+  height: 100px;
+}
+form>h2{
+  text-align: center;
+  margin-bottom: 10%;
+  margin-top: 2%;
+}
+form>label {
+  margin-right: auto;
+  text-align: left;
+  margin-left: 10%;
+  align-items: flex-end;
+}
+.form-inpt{
+  width: 80%;
+  height: 37px;
+  padding-left: 2%;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+form > input.largo,
+form > container > input.largo {
+  width: 97%;
+}
+
+form > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+form > div.other {
+  display: flex;
+  justify-content: space-evenly;
+}
+a {
+  text-align: center;
+}
+
+a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+container #enviar {
+  margin-top: 30px;
+}
+#enviar {
+  background-color: #000000;
+  border-radius: 10px;
+  color: white;
+  width: 80%;
+  height: 45px;
+  margin: 10px auto 10px auto;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
