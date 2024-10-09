@@ -54,33 +54,44 @@
                     <li><a href="" rel="nofollow" class="LogOut fa-power-off">&#10006 CERRAR SESION</a></li>
                 </ul>
     </header>
+    <form action="" id="registro">
+        <h2>Registro</h2>
+    
+        <label id="name" for="">Nombre y Apellido*</label>
+        <input class="form-inpt" type="text" placeholder="Nombre - Apellido" required>
 
-    <form action="" id="login">
-        <h2>Log in</h2>
-
+        <label id="user">Nombre de Usuario</label>
+        <input class="form-inpt" type="text" placeholder="user1234   (max 8 caracteres)" required minlength="1"
+            maxlength="8" pattern=".{1,8}">
+    
+        <label id="edad">Edad*</label>
+        <input class="form-inpt" type="number" required min="1" max="120">
+    
         <label id="email" for="">Email:</label>
-        <input class="form-inpt" type="email" placeholder="&#9993 Email" required>
+        <input class="form-inpt" type="email" placeholder="Email" required>
     
         <label id="cont">contraseña*</label>
-        <input id="password" class="form-inpt" type="password" placeholder="********" required>
-
+        <input class="form-inpt" type="password" required>
+    
+        <label  id="rep">Repetir contraseña*</label>
+        <input class="form-inpt" type="password" required>
+    
         <figure class="img1" id="img1">
             <img src="img/Robot.png" alt="">
         </figure>
-    
 
         <button class="btn btn-1" id="enviar">
-         <span>ENVIAR</span> 
+            <span> ENVIAR</span> 
         </button>
+        
         <br>
         <div class="other">
-        <a>Login with Google</a>
-        <a>Login with Facebook</a>
+        <a>Sign in  with Google</a>
+        <a>Sign in with Facebook</a>
         </div>
         <br>
         <br>
-        <a href="registro.html">Crear cuenta</a>
+        <a href="login.html">Ya tengo cuenta</a>
     </form>
-
 </body>
 </html>

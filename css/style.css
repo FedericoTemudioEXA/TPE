@@ -19,6 +19,7 @@
     background-image:url(../img/fondo2.jpg);
     padding: 0;
     margin: 0;
+    z-index: -9999;
   }
   
 
@@ -324,6 +325,7 @@ form {
   padding-bottom: 30px;
   margin-top: 5%;
   border-radius: 74px;
+  z-index: -2;
 }
 
 form form > img {
@@ -388,10 +390,12 @@ a:hover {
 container #enviar {
   margin-top: 30px;
 }
-#enviar {
-  background-color: #000000;
+.btn {
+  position: relative;
+  background-color: transparent;
   border-radius: 10px;
-  color: white;
+  color: #E6B217;
+  border: 2px solid #E6B217;
   width: 80%;
   height: 45px;
   margin: 10px auto 10px auto;
@@ -399,5 +403,52 @@ container #enviar {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: 0.4s all ease-in-out 0s;
+  z-index: 66;
 }
 
+.btn:hover{
+  color: black;
+  z-index: 55;
+}
+.btn::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 7px;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: #E6B217;
+  transition: 0.4s all ease-in-out 0s;
+}
+.btn-1::before{
+  width: 0;
+}
+.btn:hover::before{
+  right: unset;
+  left: 0;
+  width: 100%;
+}
+.btn.is_active#enviar {
+  animation: correcto 1s;
+
+}
+.btn.btn.is_active::before{
+  animation: correcto-2 1s;
+}
+@keyframes correcto {
+   0%   {background-color:green; top:10px;}
+  25%  {background-color:green; top:15px;}
+  50%  {background-color:green; top:3px;}
+  75%  {background-color:green; top:1px;}
+  100% {background-color:green; top:0px;}
+}
+@keyframes correcto-2 {
+  0%   {background-color:green;}
+ 25%  {background-color: green;}
+ 50%  {background-color:green;}
+ 75%  {background-color:green;}
+ 100% {background-color: green;}
+}
