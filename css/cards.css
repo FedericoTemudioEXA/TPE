@@ -1,0 +1,46 @@
+.contenedor-cards{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: darkkhaki;
+    height: 400px;
+    width: 100%;
+    margin-top: 200px;
+}
+
+.card{
+    background-color: #E6B217;
+    height: 200px;
+    width: 250px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.card-img{
+    height: 150px;
+    width: 100%;
+    margin: 0;
+}
+
+.card-img img{
+    width: 100%;
+    height: auto;
+    margin: 0;
+}
+
+.info{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0;
+    height: 50px;
+    width: 100%;
+}
+
+.boton-play{
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    color: azure;
+    background-color: black;
+}
