@@ -31,7 +31,6 @@ header {
     height: 75px;
     padding: 10px 20px;
     background-color: #084572;
-    color: white;
   }
   .usuario{
     position: relative;
@@ -45,15 +44,20 @@ header {
   .usuario .desplegado{
     display: none;
     position: absolute;
-    left: auto;
-    right: 245px;
-    top: 10%;
+    right: -25px;
     width: 230px;
     background-color: #0f63a0;
     z-index: 67;
     padding: 10px;
     border-radius: 10%;
     border: 2px solid #E6B217;
+  }
+  .ListUser{
+    position: relative;
+    left: 7%;
+  }
+  .ListUser li{
+    list-style: none;
   }
   .usuario .desplegado:before {
     content: '';
@@ -65,12 +69,13 @@ header {
     height: 0;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-bottom: 5px solid #0f63a0
+    border-bottom: 5px solid #E6B217
   
   }
   li>a{
     font-size: 20px;
     font-family: Roboto;
+    color: #E6B217;
   }
   #login-toggle:checked + .button + .desplegado,#menu-toggle:checked + .menu-icon + .nav {
     display: block;
