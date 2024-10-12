@@ -1,14 +1,32 @@
-body{
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-image:url(img/fondo2.jpg);
+    ;
+}
+/*
+  turquoise: #20B2AA
+  coral o salmon: #FF6B6B
+  A lime green: #32CD32 */
+body {
+  position: relative;
+}
+
+body::before {
+  content: "";
+  background-image: url(img/fondo2.jpg);
+  opacity: 0.2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
 }
 
 body, header{
     width: 100%;
 }
-
 /*/////////////////////////  HEADER  //////////////////////////*/
 
 header {
@@ -30,11 +48,10 @@ header {
   .usuario .desplegado{
     display: none;
     position: absolute;
-    right: -15px;
+    right: 0vw;
     width: 40vw;
     background-color: #0f63a0;
     z-index: 67;
-    padding-right: 10vw;
     border-radius: 10%;
     border: 2px solid #E6B217;
   }
@@ -48,7 +65,7 @@ header {
   .usuario .desplegado:before {
     content: '';
     position: absolute;
-    left: 175px;
+    left: 32vw;
     top: -5px;
     box-sizing: border-box;
     width: 0;
@@ -59,7 +76,7 @@ header {
   
   }
   li>a{
-    font-size: 18px;
+    font-size: 14px;
     font-family: Roboto;
     color: #E6B217;
   }
@@ -83,14 +100,14 @@ header {
   .nav {
     display: none;
     position: absolute;
-    top: 40px;
+    top: 7vh;
     left: 0;
     background-color: #084572;
     width: 200px;
     border-radius: 2%;
     border: 1px solid #E6B217;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 20;
+    z-index: 99;
   }
   
   .nav ul {
@@ -108,6 +125,9 @@ header {
     padding: 10px;
     color: white;
     text-decoration: none;
+  }
+  .nav ul li a:hover{
+    color:  #32CD32;
   }
 
   .nav-li li{
@@ -150,11 +170,13 @@ header {
 
 
 /*/////////////////////////  CARDS Y CARRUSEL  //////////////////////////*/
-
-h1{
-    border-bottom: 4px solid #444;
-    width: 100%;
-
+h1 {
+  color: #084572;
+  border-bottom: 4px solid #e6b217;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 5px;
+  text-shadow: -2px 2px 0px rgb(249 165 18);
 }
 
 .bomberman{
@@ -168,6 +190,8 @@ h1{
 }
 
 .cards-destacadas{
+  visibility: hidden;
+  position: absolute;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 3,5vw;
@@ -324,7 +348,8 @@ footer {
       margin-top: 3%;
       margin-bottom: 0;
       display: flex;
-      justify-content:center;
+      flex-direction: column;
+      justify-content: space-between;
       align-items: center;
   
   }
@@ -332,8 +357,7 @@ footer {
   
   
   .logo-footer{
-      width: 165px;
-      margin-right: 5%; 
+      width: 165px; 
   }
   
   .img-logo{
@@ -343,7 +367,8 @@ footer {
   
   .footer-nav{
       display: flex;
-      justify-content: space-evenly;
+      flex-direction: column;
+      padding: 3% 0;
   }
   
   .footer-li{
@@ -364,6 +389,9 @@ footer {
   }
   
   .footer-li li{
+    visibility: hidden;
+    position: absolute;
+    display: block;
       color: white;
       padding: 2px;
       font-size: 12px;
@@ -372,15 +400,15 @@ footer {
   }
   
   .social-network {
+    width: 150px;
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-between;
   }
   
   
   .social-network a{
-      width: 48px;
+      width: 38px;
       height: 48px;
-      margin-left: 24px;
   }
   
   .img-footer{
@@ -400,5 +428,41 @@ footer {
 
 @media only screen and (min-width:768px) {
 
+/*////////////HEADER///////////////////*/
+.logo{
+  content: normal;
+  width: 250px;
+  padding-left: 10%;
+}
+.usuario .desplegado{
+  width: 400%;
+}
+.usuario .desplegado::before{
+  left: 85%;
+}
+li>a{
+  font-size: 18px;
+}
+.nav{
+  top: 5vh;
+}
+.barra-busq>input{
+  width: 20vw;
+}
+
+
+/*/////////////////////////  CARDS Y CARRUSEL  //////////////////////////*/
+.destacados{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.cards-destacadas{
+  visibility: visible ;
+  position: relative;
+}
+.cards-destacadas .card{
+width: 200px;
+}
 
 }
