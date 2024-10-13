@@ -275,9 +275,9 @@ h1 {
   .container1{
     margin-top: 1vh;
     width: 100%;
-    background-color: #44444471;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .lista-cards{
@@ -292,37 +292,44 @@ h1 {
 display: none;
 }
 
-
+#slideLeft, #slideRight {
+  display: none;
+}
 
 /*/////CARD NUMERO 2///////*/
 
 .container2{
-    display: grid;
-    place-items: center;
-    margin-inline: 1.5rem;
-    padding-block: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   }
   
-  .card2{
-    display: grid;
-    column-gap: 3.5rem;
-    grid-template-columns: repeat(2, 1fr);
+  .cards-vert{
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    width: 1200px;
+    margin: 10px;
   }
   
-  .card_article{
-    position: relative;
-    overflow: hidden;
-    width: 35vw;
-    height: 25vh;
+  .card_vertical{
     margin: 2px;
-  }
-  
-  .card_article img{
-    width: 100%;
+    position: relative;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    width: 160px;
     border-radius: 20px;
+  }
+
+  .card_vertical img{
+    border-radius: 20px;
+
   }
   
   .card-info{
+    position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -334,12 +341,12 @@ display: none;
     box-shadow: 0 8px 24px hsla(0, 0%, 0%, .15);
     border-radius: 1rem;
     position: absolute;
-    bottom: -9vh;
+    bottom: -12svh;
     left: 0;
     right: 0;
     margin-inline: auto;
     opacity: 0;
-    transition: opacity 1s 1s;
+    transition: opacity 3s 0s;
   
   }
   
@@ -355,13 +362,13 @@ display: none;
     margin: 0;
   }
   
-  .card_article:hover .card-info{
+  .card_vertical:hover .card-info{
     animation: show-data 1s forwards;
     opacity: 1;
     transition: opacity .3s;
   }
   
-  .card_article:hover {
+  .card_vertical:hover {
     animation: remove-overflow 2s forwards;  
   }
   
@@ -508,6 +515,9 @@ li>a{
 width: 200px;
 }
 
+
+.card{
+  width: 300px; 
 }
 
 
@@ -645,3 +655,16 @@ container #enviar {
     opacity: 0;
   }
 }
+
+#slideLeft, #slideRight {
+border-radius:50%;
+height: 50px;
+width: 50px;
+background-color: rgba(255, 255, 255, 0.568);
+border: 0;
+}
+
+}
+
+
+
