@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="js/validar.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="menu-hamburguesa">
+            <input type="checkbox" hidden="hidden" id="menu-toggle">
+            <label for="menu-toggle" class="menu-icon">&#9776;</label>
+
+            <img class="logo" src="img/logo.jpg" alt="">
+        </div>
+
+        <div class="barra-busq">
+            <input type="text" placeholder="Buscar...">
+            <img class="lupa" src="img/lupa.png" alt="lupa">
+        </div>
+        <div class="usuario">
+            <input type="checkbox" hidden="hidden"  id="login-toggle">
+            <label for="login-toggle" class="button">
+                <span class="user-img">
+                    <img src="img/log-picture.jpeg" alt="">
+                </span>
+            </label>
+    </header>
+
+    <form action="" id="login">
+        <h2>Log in</h2>
+
+        <label id="email" for="">Email:</label>
+        <input class="form-inpt" type="email" placeholder="&#9993 Email" required>
+    
+        <label id="cont">contraseña*</label>
+        <input id="password" class="form-inpt" type="password" placeholder="********" required>
+
+        <figure class="img1" id="img1">
+            <img src="img/Robot.png" alt="">
+        </figure>
+    
+
+        <button class="btn btn-1" id="enviar">
+         <span>ENVIAR</span> 
+        </button>
+        <br>
+        <div class="other">
+        <a>Login with Google</a>
+        <a>Login with Facebook</a>
+        </div>
+        <br>
+        <br>
+        <a href="registro.html">Crear cuenta</a>
+    </form>
+
+</body>
+</html>

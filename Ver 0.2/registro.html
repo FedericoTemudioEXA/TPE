@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="js/validar.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="menu-hamburguesa">
+            <input type="checkbox" hidden="hidden" id="menu-toggle">
+            <label for="menu-toggle" class="menu-icon">&#9776;</label>
+
+            <img class="logo" src="img/logo.jpg" alt="">
+        </div>
+
+        <div class="barra-busq">
+            <input type="text" placeholder="Buscar...">
+            <img class="lupa" src="img/lupa.png" alt="lupa">
+        </div>
+        <div class="usuario">
+            <input type="checkbox" hidden="hidden"  id="login-toggle">
+            <label for="login-toggle" class="button">
+                <span class="user-img">
+                    <img src="img/log-picture.jpeg" alt="">
+                </span>
+            </label>
+    </header>
+    <form action="" id="registro">
+        <h2>Registro</h2>
+    
+        <label id="name" for="">Nombre y Apellido*</label>
+        <input class="form-inpt" type="text" placeholder="Nombre - Apellido" required>
+
+        <label id="user">Nombre de Usuario</label>
+        <input class="form-inpt" type="text" placeholder="user1234   (max 8 caracteres)" minlength="1"
+            maxlength="8" pattern=".{1,8}">
+    
+        <label id="edad">Edad*</label>
+        <input class="form-inpt" type="number" required min="1" max="120">
+    
+        <label id="email" for="">Email:</label>
+        <input class="form-inpt" type="email" placeholder="Email" required>
+    
+        <label id="cont">contraseña*</label>
+        <input class="form-inpt" type="password" required>
+    
+        <label  id="rep">Repetir contraseña*</label>
+        <input class="form-inpt" type="password" required>
+    
+        <figure class="img1" id="img1">
+            <img src="img/Robot.png" alt="">
+        </figure>
+
+        <button class="btn btn-1" id="enviar">
+            <span> ENVIAR</span> 
+        </button>
+        
+        <br>
+        <div class="other">
+        <a>Sign in  with Google</a>
+        <a>Sign in with Facebook</a>
+        </div>
+        <br>
+        <br>
+        <a href="login.html">Ya tengo cuenta</a>
+    </form>
+</body>
+</html>

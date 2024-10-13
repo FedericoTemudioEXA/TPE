@@ -27,6 +27,51 @@ body::before {
 body, header{
     width: 100%;
 }
+/*/////////////////////////  LOADER  //////////////////////////*/
+body #contenedor-loader{
+  height: 100%;
+  width: 100%;
+  background-color: #084572;
+  position: fixed;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition-duration: 5s ;
+  transition-timing-function:ease;
+}
+
+#porcentaje {
+  position: absolute;
+  animation: none;
+  color: rgb(243, 228, 11);
+  font-size:22px;
+  top: 0;
+  left:0;
+  right: 0;
+  bottom: 0;
+  margin:auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loader{
+  position: absolute;
+  border: 15px solid #20B2AA;
+  border-style: dotted;
+  height: 90px;
+  width: 90px;
+  border-radius: 100%;
+  animation: girar 1.5s infinite;
+}
+@keyframes girar {
+  0%{
+      transform: rotate(0deg);
+  }
+  50%{transform: rotate(180deg);
+  }100% {transform: rotate(360deg);}
+} 
+
 /*/////////////////////////  HEADER  //////////////////////////*/
 
 header {
@@ -76,9 +121,7 @@ header {
   
   }
   li>a{
-    font-size: 14px;
     font-family: Roboto;
-    color: #E6B217;
   }
   #login-toggle:checked + .button + .desplegado,#menu-toggle:checked + .menu-icon + .nav {
     display: block;
@@ -127,7 +170,7 @@ header {
     text-decoration: none;
   }
   .nav ul li a:hover{
-    color:  #32CD32;
+    color: #E6B217;
   }
 
   .nav-li li{
@@ -465,4 +508,140 @@ li>a{
 width: 200px;
 }
 
+}
+
+
+
+/* FORMS */
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background-color: rgba(8, 69, 114, 1);
+  width: 500px;
+  margin: auto;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 30px;
+  margin-top: 5%;
+  border-radius: 74px;
+  z-index: -2;
+}
+
+form form > img {
+  align-self: center;
+  width: fit-content;
+  height: 100px;
+}
+figure img {
+  margin: auto;
+}
+.img1 img {
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+  height: 100px;
+}
+form>h2{
+  text-align: center;
+  margin-bottom: 10%;
+  margin-top: 2%;
+  color: #E6B217;
+}
+form>label {
+  margin-right: auto;
+  text-align: left;
+  margin-left: 10%;
+  align-items: flex-end;
+  color: #E6B217;
+}
+.form-inpt{
+  width: 80%;
+  height: 37px;
+  padding-left: 2%;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+form > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+form > div.other {
+  display: flex;
+  justify-content: space-evenly;
+}
+a {
+  text-align: center;
+  color: #E6B217;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+container #enviar {
+  margin-top: 30px;
+}
+.btn {
+  position: relative;
+  background-color: transparent;
+  border-radius: 10px;
+  color: #E6B217;
+  border: 2px solid #E6B217;
+  width: 80%;
+  height: 45px;
+  margin: 10px auto 10px auto;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s all ease-in-out 0s;
+  z-index: 66;
+}
+
+.btn:hover{
+  color: black;
+  z-index: 55;
+}
+.btn::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 7px;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: #E6B217;
+  transition: 0.4s all ease-in-out 0s;
+}
+.btn-1::before{
+  width: 0;
+}
+.btn-1:hover::before{
+  right: unset;
+  left: 0;
+  width: 100%;
+}
+.btn.btn.is_active::before{
+  animation: blastOut 1s;
+}
+@keyframes blastOut {
+  from {
+    transform: scale(0.9);
+    opacity: .4;
+  }
+  to {
+    transform: scale(2);
+    opacity: 0;
+  }
 }
