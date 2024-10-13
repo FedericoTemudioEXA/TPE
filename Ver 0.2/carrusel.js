@@ -5,10 +5,10 @@ document.addEventListener("DOMContentLoaded", function() {
     let buttonLeft = document.getElementById('slideLeft');
 
     buttonRight.onclick = function () {
-      document.getElementById('container').scrollLeft += 250;
+      document.getElementById('container').scrollLeft += 1200;
     };
     buttonLeft.onclick = function () {
-      document.getElementById('container').scrollLeft -= 250;
+      document.getElementById('container').scrollLeft -= 1200;
     };
 
 
