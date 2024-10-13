@@ -665,11 +665,64 @@ container #enviar {
   }
 }
 
-.4enLinea{
-  width: 900px;
-  height:680px
+.cuatroEnLinea{
+  display: flex;
+  justify-content: center;
 }
 
+.juego{
+  margin-right: 15px ;
+  width: 900px;
+  height:600px;
+  background-color: #084572;
+}
+
+.juego img{
+  width: 100%;
+}
+
+.reglas{
+  width: 320px;
+  height:600px;
+  background-color: #084572;
+}
+
+.content-box{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 40px;
+}
+.capturas{
+  height: 230px;
+  width: 1235px;
+  background-color: #084572;
+  margin: 10px;
+}
+
+.comment-content{
+  background-color: white;
+  padding: 20px;
+  width: 80%;
+  margin-bottom: 10px;
+}
+
+.user{
+  display: flex;
+  align-items: center;
+}
+.user img{
+  margin: 2px 10px;
+  background-color: #444;
+  border-radius: 50%;
+}
+.comment{
+  width: 75%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2px auto;
+}
 #slideLeft, #slideRight {
 display: block;
 border-radius:50%;
