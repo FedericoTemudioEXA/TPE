@@ -124,7 +124,7 @@ header {
     font-family: Roboto;
 
   }
-  #login-toggle:checked + .button + .desplegado,#menu-toggle:checked + .menu-icon + .nav {
+  #login-toggle:checked + .button + .desplegado,#menu-toggle:checked + .menu-icon + .nav ,  #share-toggle:checked + .button + .share{
     display: block;
   }
   
@@ -665,6 +665,8 @@ container #enviar {
   }
 }
 
+
+/*///////////CUATRO EN LINEA //////////////*/
 .cuatroEnLinea{
   display: flex;
   justify-content: center;
@@ -680,7 +682,25 @@ container #enviar {
 .juego img{
   width: 100%;
 }
-
+.barra-juego{
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+.barra-juego a{
+  width: 20%;
+}
+.barra-juego .logo-4{
+  width: 100%;
+}
+.barra-juego .share{
+  display: none;
+}
+.likes{
+  width: 200px;
+  display: flex;
+  flex-direction: row;
+}
 .reglas{
   width: 320px;
   height:600px;
