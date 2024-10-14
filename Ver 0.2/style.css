@@ -317,8 +317,23 @@ h1 {
     color: #444;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+    font-family: "Jolly Lodger", system-ui;
+    font-size: 30px;
   }
 
+
+  .info h2, p{
+    padding: 5%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .texto{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+  }
 
   .container1{
     margin-top: 1vh;
