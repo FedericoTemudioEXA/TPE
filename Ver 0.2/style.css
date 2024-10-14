@@ -357,7 +357,7 @@ h1 {
   }
 
 
-  .info h2, p{
+  .info h2,.info p{
     padding: 5%;
     white-space: nowrap;
     overflow: hidden;
@@ -780,7 +780,15 @@ container #enviar {
 
 
 /*///////////CUATRO EN LINEA //////////////*/
-
+.breadcrum{
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+}
+.breadcrum a, .breadcrum p{
+  color: #ce8e16;
+  font-size: larger;
+}
 .cuatroEnLinea{
   display: flex;
   justify-content: center;
@@ -965,7 +973,6 @@ container #enviar {
 
 
 
-/*  carrusel prueba   */
 
 
 
