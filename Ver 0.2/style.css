@@ -726,6 +726,9 @@ container #enviar {
   justify-content: space-evenly;
 
 }
+.share-img{
+  cursor: pointer;
+}
 .share {
   position: absolute;
   width: 80%;
@@ -786,8 +789,13 @@ container #enviar {
   width: 1235px;
   background-color: #084572;
   margin: 10px;
+  display: flex;
+  justify-content: center;
 }
-
+.img-cp{
+  width: 283px;
+  margin: 0 10px;
+}
 .comentarios{
   width: 80%;
   background-color: white;
