@@ -224,9 +224,11 @@ h1 {
 }
 
 .bomberman{
+    height: max-content;
     margin-top: 10px;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 
@@ -267,7 +269,7 @@ h1 {
   justify-content: center;
 }
 
-.card:hover .overlay{
+.card:hover .overlay, .bomberman:hover .overlay{
   opacity: 1;
 }
 
@@ -391,7 +393,7 @@ h1 {
 display: none;
 }
 
-#slideLeft, #slideRight {
+.btn-crrsl {
   display: none;
 }
 
@@ -408,6 +410,7 @@ display: none;
     display: flex;
     overflow-x: scroll;
     overflow-y: hidden;
+    scroll-behavior: smooth;
     width: 1200px;
     margin: 10px;
   }
@@ -428,7 +431,8 @@ display: none;
 
   .card_vertical img{
     border-radius: 20px;
-
+    height: 220px;
+    margin-right:10px;
   }
   
   .card-info{
@@ -645,8 +649,36 @@ width: 265px;
   margin: 10px;
 }
 
+.card_vertical img{
+  width: 260px;
+  height: 365px;
+}
+/*/////////////////////////  Footer //////////////////////////*/
+.footer{
+  flex-direction: row;
+  justify-content: space-around;
+}
 
+.logo-footer{
+  width: 230px;
+}
 
+.footer-nav{
+  flex-direction: row;
+}
+
+.footer-li li{
+visibility: visible;
+position: relative;
+}
+
+.social-network{
+  width: 220px;
+}
+
+.social-network img{
+  width: 4vw;
+}
 
 /* FORMS */
 
@@ -952,24 +984,16 @@ container #enviar {
   justify-content: center;
   margin: 2px auto;
 }
-#slideLeft, #slideRight{
+.btn-crrsl{
   border: 0;
   width: 60px;
   height: 60px;
   display: block;
   color: white;
-}
-
-#slideLeft{
-  background: linear-gradient(to right,#084572,#084672bd,#08467288,transparent);
   border-radius: 50%;
+  background-color: #084572;
 }
 
-#slideRight{
-  background: linear-gradient(to left,#084572,#084672bd,#08467288,transparent); 
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-}
 
 
 
