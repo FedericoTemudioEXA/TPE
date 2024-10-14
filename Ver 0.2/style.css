@@ -695,25 +695,62 @@ container #enviar {
 
 .juego img{
   width: 100%;
+  height: 90%;
 }
 .barra-juego{
   display: flex;
   justify-content: space-between;
   box-sizing: border-box;
+  align-items: end;
 }
 .barra-juego a{
   width: 20%;
 }
 .barra-juego .logo-4{
-  width: 100%;
+  width: 155%;
+  height: auto;
+  margin-left: 10px;
 }
 .barra-juego .share{
   display: none;
 }
 .likes{
+  position: relative;
   width: 200px;
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
+
+}
+.share {
+  position: absolute;
+  width: 80%;
+  top: 114%;
+  background: #084572;
+  border: 2px solid goldenrod;
+  border-radius: 10%;
+  padding: 5px;
+}
+
+.share:before {
+  content: '';
+  position: absolute;
+  left: 132px;
+  top: -5px;
+  box-sizing: border-box;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #E6B217
+
+}
+.share .social-network{
+  width: 100%;
+  height: auto;
+}
+.share .social-network a{
+  width: 40px;
 }
 .reglas{
   width: 320px;
