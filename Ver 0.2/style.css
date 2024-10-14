@@ -224,13 +224,15 @@ h1 {
 }
 
 .bomberman{
+    margin-top: 10px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
 }
 
 
 .bomberman img{
-    width: 80%;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
 }
 
 .cards-destacadas{
@@ -238,7 +240,6 @@ h1 {
   position: absolute;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    column-gap: 3,5vw;
 }
 
 .card{
@@ -519,6 +520,7 @@ li>a{
 
 /*/////////////////////////  CARDS Y CARRUSEL  //////////////////////////*/
 .destacados{
+  margin-bottom: 50px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -528,7 +530,7 @@ li>a{
   position: relative;
 }
 .cards-destacadas .card{
-width: 200px;
+width: 265px;
 }
 
 
@@ -821,18 +823,21 @@ container #enviar {
 }
 #slideLeft, #slideRight{
   border: 0;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
+  width: 60px;
+  height: 60px;
   display: block;
   color: white;
 }
 
 #slideLeft{
   background: linear-gradient(to right,#084572,#084672bd,#08467288,transparent);
+  border-radius: 50%;
 }
 
 #slideRight{
-  background: linear-gradient(to left,#084572,#084672bd,#08467288,transparent);
+  background: linear-gradient(to left,#084572,#084672bd,#08467288,transparent); 
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 
