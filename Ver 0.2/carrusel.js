@@ -22,4 +22,13 @@ document.addEventListener("DOMContentLoaded", function() {
     };
 
 
+    let buttonRight3 = document.getElementById('slideRight3');
+    let buttonLeft3 = document.getElementById('slideLeft3');
+
+    buttonRight3.onclick = function () {
+      document.getElementById('container3').scrollLeft += 1200;
+    };
+    buttonLeft3.onclick = function () {
+      document.getElementById('container3').scrollLeft -= 1200;
+    };
 });

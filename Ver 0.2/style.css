@@ -411,6 +411,10 @@ display: none;
     width: 1200px;
     margin: 10px;
   }
+
+  .cards-vert::-webkit-scrollbar{
+   display: none;
+  }
   
   .card_vertical{
     margin: 2px;
