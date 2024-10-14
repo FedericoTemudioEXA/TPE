@@ -1,53 +1,58 @@
-.container{
-    margin-top: 1vh;
-    width: 100%;
-    background-color: #44444471;
-    display: flex;
-    justify-content: center;
-}
+    <div class="container2">
+        <div class="cards-vert">
+            <div class="card_vertical">
+                <img src="img/vertical/miniblox.jpg" alt="">
 
-.lista-cards{
-    width: 1200px;
-    margin: 10px;
-    display: flex;
-    overflow-x: scroll;
-}
+                <div class="card-info">
+                    <p class="titulo">MiniBlox</p>
+                    <p class="precio">ARS$ 99</p>
+                    <button>Comprar</button>
+                </div>
+            </div>
+            <div class="card_vertical">
+                <img src="img/vertical/miniblox.jpg" alt="">
 
+                <div class="card-info">
+                    <p class="titulo">MiniBlox</p>
+                    <p class="precio">ARS$ 99</p>
+                    <button>Comprar</button>
+                </div>
+            </div>
+            <div class="card_vertical">
+                <img src="img/vertical/miniblox.jpg" alt="">
 
-.lista-cards::-webkit-scrollbar{
-display: none;
-}
+                <div class="card-info">
+                    <p class="titulo">MiniBlox</p>
+                    <p class="precio">ARS$ 99</p>
+                    <button>Comprar</button>
+                </div>
+            </div>
+            <div class="card_vertical">
+                <img src="img/vertical/miniblox.jpg" alt="">
 
+                <div class="card-info">
+                    <p class="titulo">MiniBlox</p>
+                    <p class="precio">ARS$ 99</p>
+                    <button>Comprar</button>
+                </div>
+            </div>
+            <div class="card_vertical">
+                <img src="img/vertical/miniblox.jpg" alt="">
 
-.card{
-    display: flex;
-    flex-direction: column;
-    margin: 10px;
-}
+                <div class="card-info">
+                    <p class="titulo">MiniBlox</p>
+                    <p class="precio">ARS$ 99</p>
+                    <button>Comprar</button>
+                </div>
+            </div>
+            <div class="card_vertical">
+                <img src="img/vertical/miniblox.jpg" alt="">
 
-.card img{
-    width: 240px;
-    height: 120px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-
-}
-  
-  
-  
-.info{
-    background-color: #E6B217;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    margin: 0;
-    height: 60px;
-    width: 100%;
-    color: #444;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-  }
-
-
-
-
+                <div class="card-info">
+                    <p class="titulo">MiniBlox</p>
+                    <p class="precio">ARS$ 99</p>
+                    <button>Comprar</button>
+                </div>
+            </div>
+        </div>
+    </div>

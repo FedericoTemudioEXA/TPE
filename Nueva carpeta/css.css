@@ -17,7 +17,7 @@ html {
     align-items: center;
   }
   
-  .cards {
+  .cards-vertical {
     --item-width: 250px;
     list-style: none;
     scroll-snap-type: x mandatory;
@@ -37,15 +37,15 @@ html {
     transition: 1s ease-in-out;
   }
   
-  .cards .card:first-of-type {
+  .cards-vertical .card-v:first-of-type {
     margin-left: calc(50% - (var(--item-width) / 2));
   }
   
-  .cards .card:last-of-type {
+  .cards-vertical .card-v:last-of-type {
     margin-right: calc(50% - (var(--item-width) / 2));
   }
   
-  .card {
+  .card-v {
     view-timeline-name: --item-visible;
     view-timeline-axis: inline;
   
@@ -63,7 +63,7 @@ html {
     text-decoration: none;
   }
   
-  .card > .image {
+  .card-v > .image-card-v {
     position: relative;
     display: block;
     animation: linear rotate both;
@@ -80,7 +80,7 @@ html {
     backface-visibility: hidden;
   }
   
-  .image > img {
+  .image-card-v > img {
     display: block;
     border-radius: 1rem;
     width: 100%;
@@ -88,7 +88,7 @@ html {
     object-fit: cover;
   }
   
-  .image .reflection {
+  .image-card-v .reflection {
     position: absolute;
     width: 100%;
     height: 100%;
