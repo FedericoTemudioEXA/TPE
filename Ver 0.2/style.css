@@ -372,6 +372,10 @@ h1 {
     justify-content: center;
   }
 
+  .titulo{
+    width: 100%;
+  }
+
   .container1{
     margin-top: 1vh;
     width: 100%;
