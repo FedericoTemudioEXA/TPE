@@ -306,15 +306,12 @@ h2{
 .btn-play:hover{
   background: rgba(255, 255, 255, 0.3);
   cursor: pointer;
-  transform: scale(1.5);
+  transform: scale(1.1);
 }
 .card:hover .btn-play:hover{
-  transform: scale(1.5);
+  transform: scale(1.2);
 }
-.card .btn-play{
-  transition: 0.3s;
-  transform: translateY(-20px);
-}
+
 
 .card:hover .btn-play{
   transform: translateY(0);
