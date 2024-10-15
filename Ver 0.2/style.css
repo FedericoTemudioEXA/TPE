@@ -360,7 +360,7 @@ h1 {
   }
 
 
-  .info h2,.info p{
+  .info p{
     padding: 5%;
     white-space: nowrap;
     overflow: hidden;
