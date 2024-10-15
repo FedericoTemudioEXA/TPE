@@ -518,6 +518,11 @@ display: none;
     color: #32CD32;
   padding: 1em 2em;
   transition: 0.5s;
+  width: 60%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   }
   .raise:hover,.raise:focus {
     box-shadow: 0 0.5em 0.5em -0.4em #32CD32;
