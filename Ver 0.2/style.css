@@ -984,6 +984,7 @@ container #enviar {
 .comment-send{
   display: flex;
   height: 90px;
+  margin-left: 49px;
 }
 .btn-send{
   position: relative;
@@ -1024,7 +1025,9 @@ container #enviar {
 }
 
 
-
+.user img{
+  width: 36px;
+}
 
 .comment-section{
   margin: 20px;
