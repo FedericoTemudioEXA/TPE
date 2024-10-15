@@ -824,7 +824,7 @@ container #enviar {
   height: 30px;
   display: flex;
   flex-direction: row;
-  margin: 10px 20px;
+  margin: 10px 120px;
 }
 .breadcrum a, .breadcrum p{
   color: #0f63a0;
@@ -932,6 +932,7 @@ container #enviar {
   margin-top: 40px;
 }
 .capturas{
+  padding: 10px;
   height: 230px;
   width: 1235px;
   background-color: #084572;
@@ -944,15 +945,18 @@ container #enviar {
   margin: 0 10px;
 }
 .comentarios{
+  border: 2px solid rgba(0, 0, 0, 0.178);
+  border-radius: 10px;
   width: 80%;
   background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 2vh;
+  padding-bottom: 5vh;
 }
 
 .comment-content{
+  box-shadow: 1px 1px black;
   background-color: rgba(104, 101, 101, 0.267);
   padding: 20px;
   width: 80%;
@@ -964,6 +968,7 @@ container #enviar {
   height: 90px;
 }
 .btn-send{
+  border-radius: 10px;
   width: 100px;
   height: 50px;
 }
@@ -976,6 +981,7 @@ container #enviar {
   height: 16vh;
 }
 .comment-section input{
+  padding-left: 20px;
   align-self: center;
   margin: 0 10px;
   width: 80%;
