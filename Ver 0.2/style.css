@@ -788,10 +788,13 @@ container #enviar {
   height: 30px;
   display: flex;
   flex-direction: row;
+  margin: 10px 20px;
 }
 .breadcrum a, .breadcrum p{
-  color: #ce8e16;
+  color: #0f63a0;
   font-size: larger;
+  font-weight: bold;
+  
 }
 .cuatroEnLinea{
   display: flex;
@@ -920,13 +923,21 @@ container #enviar {
   margin-bottom: 10px;
   border-radius: 10px;
 }
+.comment-send{
+  display: flex;
+  height: 90px;
+}
+.btn-send{
+  width: 100px;
+  height: 50px;
+}
 
 .comment-section{
   margin: 20px;
   display: flex;
   flex-direction: column;
   width: 90%;
-  height: 12vh;
+  height: 16vh;
 }
 .comment-section input{
   align-self: center;
