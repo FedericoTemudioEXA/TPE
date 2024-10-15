@@ -223,6 +223,13 @@ h1 {
   text-shadow: -2px 2px 0px rgb(249 165 18);
 }
 
+h2{
+  margin-left:235px;
+  margin-bottom: 5px;
+  text-shadow: -2px 2px 0px rgb(249 165 18);
+  border-bottom: 4px solid #e6b217;
+  width: 100%;
+}
 
 .bomberman{
     height: max-content;
@@ -373,9 +380,7 @@ h1 {
     justify-content: center;
   }
 
-  .titulo{
-    width: 100%;
-  }
+
 
   .container1{
     margin-top: 1vh;
@@ -459,17 +464,17 @@ display: none;
     margin-inline: auto;
     opacity: 0;
     transition: opacity 3s 0s;
-  
+
   }
   
   .precio{
     display: block;
-    font-size: var(--small-font-size);
+    font-size:20px;
     margin: 0;
   }
   
   .titulo{
-    font-size: var(--h2-font-size);
+    font-size: 20px;
     font-weight: 500;
     margin: 0;
   }
@@ -672,9 +677,18 @@ width: 265px;
   flex-direction: row;
 }
 
+.footer-li{
+  margin-right:10px;
+}
+
+.footer-li h3{
+  margin-bottom: 10px;
+}
+
 .footer-li li{
 visibility: visible;
 position: relative;
+margin-left: 0;
 }
 
 .social-network{
