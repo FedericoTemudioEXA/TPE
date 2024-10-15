@@ -5,10 +5,10 @@ document.addEventListener("DOMContentLoaded", function() {
     let buttonLeft = document.getElementById('slideLeft');
 
     buttonRight.onclick = function () {
-      document.getElementById('container').scrollLeft += 1200;
+      document.getElementById('container').scrollLeft += 900;
     };
     buttonLeft.onclick = function () {
-      document.getElementById('container').scrollLeft -= 1200;
+      document.getElementById('container').scrollLeft -= 900;
     };
 
     let buttonRight2 = document.getElementById('slideRight2');
@@ -26,9 +26,9 @@ document.addEventListener("DOMContentLoaded", function() {
     let buttonLeft3 = document.getElementById('slideLeft3');
 
     buttonRight3.onclick = function () {
-      document.getElementById('container3').scrollLeft += 1200;
+      document.getElementById('container3').scrollLeft += 900;
     };
     buttonLeft3.onclick = function () {
-      document.getElementById('container3').scrollLeft -= 1200;
+      document.getElementById('container3').scrollLeft -= 900;
     };
 });
