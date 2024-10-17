@@ -1,0 +1,58 @@
+    <div class="container2">
+        <div class="cards-vert">
+            <div class="card_vertical">
+                <img src="img/vertical/miniblox.jpg" alt="">
+
+                <div class="card-info">
+                    <p class="titulo">MiniBlox</p>
+                    <p class="precio">ARS$ 99</p>
+                    <button>Comprar</button>
+                </div>
+            </div>
+            <div class="card_vertical">
+                <img src="img/vertical/miniblox.jpg" alt="">
+
+                <div class="card-info">
+                    <p class="titulo">MiniBlox</p>
+                    <p class="precio">ARS$ 99</p>
+                    <button>Comprar</button>
+                </div>
+            </div>
+            <div class="card_vertical">
+                <img src="img/vertical/miniblox.jpg" alt="">
+
+                <div class="card-info">
+                    <p class="titulo">MiniBlox</p>
+                    <p class="precio">ARS$ 99</p>
+                    <button>Comprar</button>
+                </div>
+            </div>
+            <div class="card_vertical">
+                <img src="img/vertical/miniblox.jpg" alt="">
+
+                <div class="card-info">
+                    <p class="titulo">MiniBlox</p>
+                    <p class="precio">ARS$ 99</p>
+                    <button>Comprar</button>
+                </div>
+            </div>
+            <div class="card_vertical">
+                <img src="img/vertical/miniblox.jpg" alt="">
+
+                <div class="card-info">
+                    <p class="titulo">MiniBlox</p>
+                    <p class="precio">ARS$ 99</p>
+                    <button>Comprar</button>
+                </div>
+            </div>
+            <div class="card_vertical">
+                <img src="img/vertical/miniblox.jpg" alt="">
+
+                <div class="card-info">
+                    <p class="titulo">MiniBlox</p>
+                    <p class="precio">ARS$ 99</p>
+                    <button>Comprar</button>
+                </div>
+            </div>
+        </div>
+    </div>
