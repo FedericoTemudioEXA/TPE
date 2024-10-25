@@ -40,4 +40,7 @@ class Figure {
         this.resaltado = resaltado;
     }
     isPointInside(x, y){ };
+
+    apllyGravity(){};
+
 }

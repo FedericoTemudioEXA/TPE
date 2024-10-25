@@ -32,17 +32,23 @@ function clearCanvas(){
 function addRect(){
     let posX = Math.round(Math.random() * canvasWidth);
     let posY = Math.round(Math.random() * canvasHeight);
-    let color = 'red';
-    let rect = new Rect(posX, posY, 20, 20, color,ctx);
+    let color = randomColor();
+    let rect = new Rect(posX, posY, 40, 40, color,ctx,'img/megaman.png');
     figures.push(rect);
 }
 
 function addCircle(){
     let posX = Math.round(Math.random() * canvasWidth);
     let posY = Math.round(Math.random() * canvasHeight);
-    let color = 'blue';
-    let circle = new Circle(posX, posY, 10, color, ctx);
+    let color = randomColor();
+    let circle = new Circle(posX, posY, 20, color, ctx, 'img/bomberman.png');
     figures.push(circle);
+}
+function randomColor(){
+    let r = Math.round(Math.random() * 255);
+    let g = Math.round(Math.random() * 255);
+    let b = Math.round(Math.random() * 255);
+    return 'rgb(' + r + ',' + g + ',' + b + ')';
 }
 
 function addFigures(){
@@ -60,6 +66,7 @@ function onMouseDown(e){
     isMouseDown = true;
     if (LastClickedFigure != null){
         LastClickedFigure.setResaltado(false);
+        LastClickedFigure.isAffectedByGravity = false;
         LastClickedFigure = null;
     }
     let clickFig = findClickedFigure(e.offsetX, e.offsetY);;
@@ -72,6 +79,9 @@ function onMouseDown(e){
 
 function onMouseUp(e){
     isMouseDown = false;
+    if (LastClickedFigure != null) {
+        LastClickedFigure.initGravity();
+    }
 }
 
 function onMouseMove(e){
@@ -89,6 +99,23 @@ function findClickedFigure(x,y){
         }
     }
 }
+function applyGravityToFigures() {
+    for (let figure of figures) {
+        figure.applyGravity();
+    }
+}
+
+function gameLoop() {
+    if (LastClickedFigure != null) {
+        LastClickedFigure.applyGravity();
+    }
+    drawFigure();
+    requestAnimationFrame(gameLoop);
+}
+
+// Start the game loop
+gameLoop();
+
 
 canvas.addEventListener('mousedown',onMouseDown, false);
 canvas.addEventListener('mouseup', onMouseUp, false);
