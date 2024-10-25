@@ -8,6 +8,7 @@ const CANT_FIG = 30;
 let figures = [];
 let LastClickedFigure = null;
 let isMouseDown = false;
+let coordsCanvas = canvas.getBoundingClientRect();
 
 function addFigure(){
     if (Math.random() > 0.5){
@@ -61,20 +62,21 @@ function onMouseDown(e){
         LastClickedFigure.setResaltado(false);
         LastClickedFigure = null;
     }
-    let clickFig = findClickedFigure(e.layerX,e.layerY);
+    let clickFig = findClickedFigure(e.offsetX, e.offsetY);;
     if (clickFig !=null){
         clickFig.setResaltado(true);
         LastClickedFigure = clickFig;
     }
     drawFigure();
 }
+
 function onMouseUp(e){
     isMouseDown = false;
 }
 
 function onMouseMove(e){
     if (isMouseDown && LastClickedFigure != null){
-        LastClickedFigure.setPosition(e.layerX, e.layerY);
+        LastClickedFigure.setPosition(e.offsetX, e.offsetY);
         drawFigure();
     }
 }
