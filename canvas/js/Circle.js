@@ -16,7 +16,7 @@ class Circle extends Figure{
         this.isAffectedByGravity = true;
     }
 
-    applyGravity() {
+    /*applyGravity() {
         if (this.isAffectedByGravity) {
             this.velocityY += this.gravity;
             this.posY += this.velocityY;
@@ -33,7 +33,39 @@ class Circle extends Figure{
                 }
             }
         }
-    }
+    }*/
+        applyGravity() {
+            if (!this.isAffectedByGravity) return;
+        
+            if (this.posY < board.startY + board.height && 
+                this.posX >= board.startX && 
+                this.posX < board.startX + board.width) {
+                
+                let col = Math.floor((this.posX - board.startX) / board.cellSize);
+                
+                if (!board.isColumnFull(col)) {
+                    let targetY = board.startY + board.getLowestEmptyRow(col) * board.cellSize + board.cellSize / 2;
+                    
+                    // Move towards the target position
+                    let dy = targetY - this.posY;
+                    this.posY += Math.min(dy * 0.1, 5); // Limit the falling speed
+        
+                    // Check if the circle has reached (or nearly reached) its target position
+                    if (Math.abs(dy) < 1) {
+                        board.placeCircle(this, col);
+                    }
+                    return;
+                }
+            }
+        
+            // If not falling into the grid or the column is full, continue with normal gravity
+            if (this.posY + this.radius < canvasHeight) {
+                this.posY += 5; // Adjust this value to change falling speed outside the grid
+            } else {
+                this.posY = canvasHeight - this.radius;
+                this.isAffectedByGravity = false;
+            }
+        }
     draw(){
         super.draw(0);
         this.ctx.beginPath();
