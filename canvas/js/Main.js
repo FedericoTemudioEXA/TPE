@@ -12,9 +12,9 @@ let coordsCanvas = canvas.getBoundingClientRect();
 
 function addFigure(){
     if (Math.random() > 0.5){
-        addRect();
+        addCircle('img/megaman.png','blue');
     } else {
-        addCircle();
+        addCircle('img/bomberman.png','red');
     }
     drawFigure();
 }
@@ -37,11 +37,11 @@ function addRect(){
     figures.push(rect);
 }
 
-function addCircle(){
+function addCircle(imagen,resaltado){
     let posX = Math.round(Math.random() * canvasWidth);
     let posY = Math.round(Math.random() * canvasHeight);
     let color = randomColor();
-    let circle = new Circle(posX, posY, 20, color, ctx, 'img/bomberman.png');
+    let circle = new Circle(posX, posY, 20, color, ctx, imagen,resaltado);
     figures.push(circle);
 }
 function randomColor(){

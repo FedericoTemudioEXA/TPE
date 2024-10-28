@@ -1,6 +1,6 @@
 class Circle extends Figure{
-    constructor(posX, posY, radius, color,context,imagenSrc){
-        super(posX, posY, color,context)
+    constructor(posX, posY, radius, color,context,imagenSrc,resaltado){
+        super(posX, posY, color,context,resaltado)
         this.radius = radius;
         this.imagen = new Image();
         this.imagen.src = imagenSrc;

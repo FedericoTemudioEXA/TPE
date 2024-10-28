@@ -1,10 +1,10 @@
 class Figure {
-    constructor(posX,posY,fill,context){
+    constructor(posX,posY,fill,context,resaltado){
         this.posX = posX;
         this.posY = posY;
         this.fill = fill;
         this.resaltado= false;
-        this.resaltadoEstilo = 'blue';
+        this.resaltadoEstilo = resaltado;
         this.ctx = context;
     }
 
