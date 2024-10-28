@@ -16,7 +16,7 @@ class Circle extends Figure{
         this.isAffectedByGravity = true;
     }
 
-    applyGravity() {
+    /*applyGravity() {
         if (this.isAffectedByGravity) {
             this.velocityY += this.gravity;
             this.posY += this.velocityY;
@@ -33,7 +33,53 @@ class Circle extends Figure{
                 }
             }
         }
-    }
+    }*/
+        applyGravity() {
+            if (!this.isAffectedByGravity) return;
+        
+            // Check if the circle is above or inside the grid
+            if (this.posY < GRID_START_Y + GRID_HEIGHT && 
+                this.posX >= GRID_START_X && 
+                this.posX < GRID_START_X + GRID_WIDTH) {
+                
+                // Find the column the circle is falling into
+                let col = Math.floor((this.posX - GRID_START_X) / CELL_SIZE);
+                
+                if (!isColumnFull(col)) {
+                    let row = getLowestEmptyRow(col);
+                    if (row !== -1) {
+                        // Calculate the target position
+                        let targetX = GRID_START_X + col * CELL_SIZE + CELL_SIZE / 2;
+                        let targetY = GRID_START_Y + row * CELL_SIZE + CELL_SIZE / 2;
+        
+                        // Move towards the target position
+                        let dx = targetX - this.posX;
+                        let dy = targetY - this.posY;
+                        
+                        // Adjust these values to change the falling speed
+                        this.posX += dx * 0.1;
+                        this.posY += Math.min(dy * 0.1, 5); // Limit the falling speed
+        
+                        // Check if the circle has reached (or nearly reached) its target position
+                        if (Math.abs(dx) < 1 && Math.abs(dy) < 1) {
+                            this.posX = targetX;
+                            this.posY = targetY;
+                            this.isAffectedByGravity = false;
+                            grid[row][col] = this;
+                        }
+                        return;
+                    }
+                }
+            }
+        
+            // If not falling into the grid or the column is full, continue with normal gravity
+            if (this.posY + this.radius < canvasHeight) {
+                this.posY += 5; // Adjust this value to change falling speed outside the grid
+            } else {
+                this.posY = canvasHeight - this.radius;
+                this.isAffectedByGravity = false;
+            }
+        }
     draw(){
         super.draw(0);
         this.ctx.beginPath();
