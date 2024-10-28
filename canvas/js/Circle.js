@@ -37,38 +37,24 @@ class Circle extends Figure{
         applyGravity() {
             if (!this.isAffectedByGravity) return;
         
-            // Check if the circle is above or inside the grid
-            if (this.posY < GRID_START_Y + GRID_HEIGHT && 
-                this.posX >= GRID_START_X && 
-                this.posX < GRID_START_X + GRID_WIDTH) {
+            if (this.posY < board.startY + board.height && 
+                this.posX >= board.startX && 
+                this.posX < board.startX + board.width) {
                 
-                // Find the column the circle is falling into
-                let col = Math.floor((this.posX - GRID_START_X) / CELL_SIZE);
+                let col = Math.floor((this.posX - board.startX) / board.cellSize);
                 
-                if (!isColumnFull(col)) {
-                    let row = getLowestEmptyRow(col);
-                    if (row !== -1) {
-                        // Calculate the target position
-                        let targetX = GRID_START_X + col * CELL_SIZE + CELL_SIZE / 2;
-                        let targetY = GRID_START_Y + row * CELL_SIZE + CELL_SIZE / 2;
+                if (!board.isColumnFull(col)) {
+                    let targetY = board.startY + board.getLowestEmptyRow(col) * board.cellSize + board.cellSize / 2;
+                    
+                    // Move towards the target position
+                    let dy = targetY - this.posY;
+                    this.posY += Math.min(dy * 0.1, 5); // Limit the falling speed
         
-                        // Move towards the target position
-                        let dx = targetX - this.posX;
-                        let dy = targetY - this.posY;
-                        
-                        // Adjust these values to change the falling speed
-                        this.posX += dx * 0.1;
-                        this.posY += Math.min(dy * 0.1, 5); // Limit the falling speed
-        
-                        // Check if the circle has reached (or nearly reached) its target position
-                        if (Math.abs(dx) < 1 && Math.abs(dy) < 1) {
-                            this.posX = targetX;
-                            this.posY = targetY;
-                            this.isAffectedByGravity = false;
-                            grid[row][col] = this;
-                        }
-                        return;
+                    // Check if the circle has reached (or nearly reached) its target position
+                    if (Math.abs(dy) < 1) {
+                        board.placeCircle(this, col);
                     }
+                    return;
                 }
             }
         
