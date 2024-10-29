@@ -1,71 +1,51 @@
 class Circle extends Figure{
-    constructor(posX, posY, radius, color,context,imagenSrc,resaltado){
+    constructor(posX, posY, radius, color,context,imagenSrc,resaltado,player){
         super(posX, posY, color,context,resaltado)
         this.radius = radius;
         this.imagen = new Image();
         this.imagen.src = imagenSrc;
-        this.velocityY = 0;
-        this.gravity = 0.5;
-        this.bounce = 0.7;
         this.isAffectedByGravity = false;
+        this.isPlaced = false;
+        this.player = player;
     }
 
 
-    initGravity() {
-        this.velocityY = 0;
-        this.isAffectedByGravity = true;
-    }
-
-    /*applyGravity() {
-        if (this.isAffectedByGravity) {
-            this.velocityY += this.gravity;
-            this.posY += this.velocityY;
-    
-            // Check for bottom collision
-            if (this.posY + this.radius > canvasHeight) {
-                this.posY = canvasHeight - this.radius;
-                this.velocityY *= -this.bounce;
-    
-                // Stop applying gravity if the bounce is very small
-                if (Math.abs(this.velocityY) < 0.1) {
+    applyGravity() {
+        if (!this.isAffectedByGravity) return;
+        
+        if (this.posY < board.startY + board.height && 
+            this.posX >= board.startX && 
+            this.posX < board.startX + board.width) {
+                
+            let col = Math.floor((this.posX - board.startX) / board.cellSize);
+                
+            if (!board.isColumnFull(col)) {
+                let targetY = board.startY + board.getLowestEmptyRow(col) * board.cellSize + board.cellSize / 2;
+                
+                // Move towards the target position
+                let dy = targetY - this.posY;
+                this.posY += Math.min(dy * 0.2, 10); // Adjust the 0.2 value to change falling speed
+        
+                // Check if the circle has reached (or nearly reached) its target position
+                if (Math.abs(dy) < 1) {
+                    board.placeCircle(this, col);
+                    this.isPlaced = true;
                     this.isAffectedByGravity = false;
-                    this.velocityY = 0;
                 }
+                return;
             }
         }
-    }*/
-        applyGravity() {
-            if (!this.isAffectedByGravity) return;
         
-            if (this.posY < board.startY + board.height && 
-                this.posX >= board.startX && 
-                this.posX < board.startX + board.width) {
-                
-                let col = Math.floor((this.posX - board.startX) / board.cellSize);
-                
-                if (!board.isColumnFull(col)) {
-                    let targetY = board.startY + board.getLowestEmptyRow(col) * board.cellSize + board.cellSize / 2;
-                    
-                    // Move towards the target position
-                    let dy = targetY - this.posY;
-                    this.posY += Math.min(dy * 0.1, 5); // Limit the falling speed
-        
-                    // Check if the circle has reached (or nearly reached) its target position
-                    if (Math.abs(dy) < 1) {
-                        board.placeCircle(this, col);
-                    }
-                    return;
-                }
-            }
-        
-            // If not falling into the grid or the column is full, continue with normal gravity
-            if (this.posY + this.radius < canvasHeight) {
-                this.posY += 5; // Adjust this value to change falling speed outside the grid
-            } else {
-                this.posY = canvasHeight - this.radius;
-                this.isAffectedByGravity = false;
-            }
+        // If not falling into the grid or the column is full, continue with normal gravity
+        if (this.posY + this.radius < canvasHeight) {
+            this.posY += 10; // Adjust this value to change falling speed outside the grid
+        } else {
+            this.posY = canvasHeight - this.radius;
+            this.isAffectedByGravity = false;
         }
+    }
+
+    
     draw(){
         super.draw(0);
         this.ctx.beginPath();
