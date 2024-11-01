@@ -3,6 +3,7 @@ class Game {
         this.canvas = document.getElementById(canvasId);
         this.ctx = this.canvas.getContext('2d');
         this.board = new Board(6, 7);
+        this.winCondition = 4; // Default to Connect 4
         
         this.cellSize = 80; // Fixed cell size
         this.pieceRadius = this.cellSize / 2 - 5;
@@ -24,6 +25,18 @@ class Game {
         };
         this.pieceImages[1].src = 'img/bomberman.png';
         this.pieceImages[2].src = 'img/Megaman.png';
+
+
+
+        this.player1Score = 0;
+        this.player2Score = 0;
+        this.gameTime = 600; // 10 minutes in seconds
+        this.timer = null;
+        this.gameOver = false;
+        
+        // Create UI elements
+        this.createUIElements();
+        
     
         // Make sure images are loaded before starting the game
         Promise.all([
@@ -41,24 +54,23 @@ class Game {
     }
     
     createPieces() {
+        const totalPieces = Math.floor((this.board.rows * this.board.cols) / 2);
         this.pieces = {
             player1: [],
             player2: []
         };
-        
-        // Create and position pieces for Player 1 (left side)
-        for (let i = 0; i < 21; i++) {
-            const row = i % 7;
-            const col = Math.floor(i / 7);
-            const x = (col + 0.5) * this.cellSize;
+
+        for (let i = 0; i < totalPieces; i++) {
+            const row = i % this.board.rows;
+            const col = Math.floor(i / this.board.rows);
+            const x = col * this.cellSize + this.boardOffsetX + this.cellSize / 2;
             const y = (row + 1) * this.cellSize;
             this.pieces.player1.push(new Piece(1, x, y, this.pieceRadius, this.pieceImages[1]));
         }
-        
-        // Create and position pieces for Player 2 (right side)
-        for (let i = 0; i < 21; i++) {
-            const row = i % 7;
-            const col = Math.floor(i / 7);
+
+        for (let i = 0; i < totalPieces; i++) {
+            const row = i % this.board.rows;
+            const col = Math.floor(i / this.board.rows);
             const x = this.canvas.width - (col + 0.5) * this.cellSize;
             const y = (row + 1) * this.cellSize;
             this.pieces.player2.push(new Piece(2, x, y, this.pieceRadius, this.pieceImages[2]));
@@ -69,7 +81,12 @@ class Game {
         this.canvas.addEventListener('mousedown', this.onMouseDown.bind(this));
         this.canvas.addEventListener('mousemove', this.onMouseMove.bind(this));
         this.canvas.addEventListener('mouseup', this.onMouseUp.bind(this));
+        document.getElementById('connect4').addEventListener('click', () => this.changeWinCondition(4));
+        document.getElementById('connect5').addEventListener('click', () => this.changeWinCondition(5));
+        document.getElementById('connect6').addEventListener('click', () => this.changeWinCondition(6));
+        document.getElementById('connect7').addEventListener('click', () => this.changeWinCondition(7));
     }
+
 
     onMouseDown(e) {
         const rect = this.canvas.getBoundingClientRect();
@@ -112,6 +129,7 @@ class Game {
     }
     
     makeMove(col) {
+        if (this.gameOver) return;
         const row = this.board.getTopEmptyRow(col);
         if (row !== -1) {
             const finalY = row * this.cellSize + this.boardOffsetY + this.cellSize / 2;
@@ -131,9 +149,25 @@ class Game {
                 finalY: finalY
             };
             
-            this.animateDrop();
+            this.animateDrop(() => {
+                this.board.grid[row][col] = this.board.currentPlayer;
+                
+                if (this.checkWin(row, col)) {
+                    this.endGame(`Player ${this.board.currentPlayer} wins!`);
+                    this.board.currentPlayer === 1 ? this.player1Score++ : this.player2Score++;
+                } else if (this.checkDraw()) {
+                    this.endGame("It's a draw!");
+                } else {
+                    this.board.switchPlayer();
+                }
+                
+                this.updateUI();
+            });
         }
     }
+
+    
+    
 
     animateDrop() {
         if (this.droppingPiece) {
@@ -146,9 +180,12 @@ class Game {
                 
                 this.board.grid[row][col] = this.droppingPiece.player;
                 
-                if (this.board.checkWin(row, col)) {
+                if (this.board.checkWin(row, col,this.winCondition)) {
+                    this.droppingPiece.player === 1 ? this.player1Score++ : this.player2Score++;
+                    this.updateUI();
+                    const player = this.droppingPiece.player === 1 ? 'Player 1' : 'Player 2';
                     setTimeout(() => {
-                        alert(`Player ${this.droppingPiece.player} wins!`);
+                        alert(`${player}  wins!`);
                         this.reset();
                     }, 100);
                 } else if (this.board.isFull()) {
@@ -176,15 +213,47 @@ class Game {
         }
         return -1;
     }
-
-    reset() {
+    changeWinCondition(newCondition) {
+        this.winCondition = newCondition;
+        this.reset();
+        this.updateUI();
+    }
+    endGame(message) {
+        this.gameOver = true;
+        this.stopTimer();
+        this.showMessage(message);
+    }
+    startNewGame() {
         this.board = new Board(6, 7);
+        this.gameOver = false;
+        this.gameTime = 600;
+        this.stopTimer();
+        this.startTimer();
+        this.showMessage('');
+        this.updateUI();
         this.createPieces();
         this.draw();
     }
+
+    reset() {
+        // Adjust the board size based on the win condition
+        const rows = this.winCondition + 2;
+        const cols = this.winCondition + 3;
+        this.board = new Board(rows, cols);
+        this.droppingPiece = null;
+        this.gameOver = false;
+        this.createPieces(); // Recreate pieces for the new board size
+        this.draw();
+        this.updateUI();
+    }
     
+
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.cellSize = Math.min(this.canvas.width / this.board.cols, this.canvas.height / this.board.rows);
+        this.pieceRadius = this.cellSize * 0.4;
+        this.boardOffsetX = (this.canvas.width - this.cellSize * this.board.cols) / 2;
+        this.boardOffsetY = (this.canvas.height - this.cellSize * this.board.rows) / 2;
     
         // Draw the board
         for (let row = 0; row < this.board.rows; row++) {
@@ -192,22 +261,36 @@ class Game {
                 const x = col * this.cellSize + this.boardOffsetX;
                 const y = row * this.cellSize + this.boardOffsetY;
     
+                // Draw cell background
                 this.ctx.fillStyle = '#084572';
                 this.ctx.fillRect(x, y, this.cellSize, this.cellSize);
     
-                this.ctx.beginPath();
-                this.ctx.arc(
-                    x + this.cellSize / 2,
-                    y + this.cellSize / 2,
-                    this.pieceRadius,
-                    0,
-                    Math.PI * 2
-                );
-                this.ctx.fillStyle = this.getColor(this.board.grid[row][col]);
-                this.ctx.fill();
+                const cellValue = this.board.grid[row][col];
+                if (cellValue === 0) {
+                    // Draw empty cell
+                    this.ctx.beginPath();
+                    this.ctx.arc(
+                        x + this.cellSize / 2,
+                        y + this.cellSize / 2,
+                        this.pieceRadius,
+                        0,
+                        Math.PI * 2
+                    );
+                    this.ctx.fillStyle = 'white';
+                    this.ctx.fill();
+                } else {
+                    // Draw piece image
+                    const pieceImage = this.pieceImages[cellValue];
+                    this.ctx.drawImage(
+                        pieceImage,
+                        x + (this.cellSize - this.pieceRadius * 2) / 2,
+                        y + (this.cellSize - this.pieceRadius * 2) / 2,
+                        this.pieceRadius * 2,
+                        this.pieceRadius * 2
+                    );
+                }
             }
         }
-    
         // Draw all the pieces
         [...this.pieces.player1, ...this.pieces.player2].forEach(piece => piece.draw(this.ctx));
     
@@ -220,9 +303,35 @@ class Game {
                 this.pieceRadius * 2,
                 this.pieceRadius * 2
             );
+        }
 
+        if (this.gameOver) {
+            this.highlightWinningPieces();
         }
     }
+    highlightWinningPieces() {
+        const borderWidth = 3;
+        const borderColor = 'lime';
+    
+        this.ctx.strokeStyle = borderColor;
+        this.ctx.lineWidth = borderWidth;
+    
+        for (const [row, col] of this.winningPieces) {
+            const x = col * this.cellSize + this.boardOffsetX;
+            const y = row * this.cellSize + this.boardOffsetY;
+    
+            this.ctx.beginPath();
+            this.ctx.arc(
+                x + this.cellSize / 2,
+                y + this.cellSize / 2,
+                this.pieceRadius - borderWidth / 2,
+                0,
+                Math.PI * 2
+            );
+            this.ctx.stroke();
+        }
+    }
+    
     
     
 
@@ -232,5 +341,50 @@ class Game {
             case 1: return 'red';
             case 2: return 'yellow';
         }
+    }
+
+
+
+
+    createUIElements() {
+        this.scoreElement = document.createElement('div');
+        this.scoreElement.id = 'score';
+        document.body.appendChild(this.scoreElement);
+    
+        this.timerElement = document.createElement('div');
+        this.timerElement.id = 'timer';
+        document.body.appendChild(this.timerElement);
+    
+        this.messageElement = document.createElement('div');
+        this.messageElement.id = 'message';
+        document.body.appendChild(this.messageElement);
+    
+        this.resetButton = document.createElement('button');
+        this.resetButton.textContent = 'New Game';
+        this.resetButton.addEventListener('click', () => this.startNewGame());
+        document.body.appendChild(this.resetButton);
+    }
+    
+    updateUI() {
+        this.scoreElement.textContent = `Player 1: ${this.player1Score} | Player 2: ${this.player2Score}`;
+        this.timerElement.textContent = `Time: ${Math.floor(this.gameTime / 60)}:${(this.gameTime % 60).toString().padStart(2, '0')}`;
+    }
+    
+    showMessage(message) {
+        this.messageElement.textContent = message;
+    }
+
+    startTimer() {
+        this.timer = setInterval(() => {
+            this.gameTime--;
+            if (this.gameTime <= 0) {
+                this.endGame('Time\'s up! It\'s a draw.');
+            }
+            this.updateUI();
+        }, 1000);
+    }
+    
+    stopTimer() {
+        clearInterval(this.timer);
     }
 }

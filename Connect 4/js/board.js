@@ -16,38 +16,32 @@ class Board {
         return false;
     }
 
-    checkWin(row, col) {
-        const directions = [
-            [0, 1], [1, 0], [1, 1], [1, -1]
-        ];
-
-        for (const [dx, dy] of directions) {
+    checkWin(row, col, winCondition) {
+        const directions = [[0, 1], [1, 0], [1, 1], [1, -1]];
+        for (let [dx, dy] of directions) {
             let count = 1;
-            count += this.countDirection(row, col, dx, dy);
-            count += this.countDirection(row, col, -dx, -dy);
-
-            if (count >= 4) return true;
+            let pieces = [[row, col]];
+            pieces = pieces.concat(this.countPieces(row, col, dx, dy));
+            pieces = pieces.concat(this.countPieces(row, col, -dx, -dy));
+            if (pieces.length >= winCondition) {
+                this.winningPieces = pieces.slice(0,winCondition );
+                return true;
+            }
         }
-
         return false;
     }
 
-    countDirection(row, col, dx, dy) {
-        let count = 0;
-        let r = row + dx;
-        let c = col + dy;
-
-        while (
-            r >= 0 && r < this.rows &&
-            c >= 0 && c < this.cols &&
-            this.grid[r][c] === this.currentPlayer
-        ) {
-            count++;
-            r += dx;
-            c += dy;
+    countPieces(row, col, dx, dy) {
+        const player = this.grid[row][col];
+        let pieces = [];
+        let x = col + dx;
+        let y = row + dy;
+        while (y >= 0 && y < this.rows && x >= 0 && x < this.cols && this.grid[y][x] === player) {
+            pieces.push([y, x]);
+            x += dx;
+            y += dy;
         }
-
-        return count;
+        return pieces;
     }
 
     isFull() {
