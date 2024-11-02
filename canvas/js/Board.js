@@ -64,103 +64,14 @@ class Board {
     }
 
 
-    placeCircle(player, col) {
-        let row = this.getLowestEmptyRow(col);
-        if (row !== -1) {
-            this.grid[row][col] = player;
-            console.log(`Placed circle for ${player.name} at row ${row}, col ${col}`);
-            return true;
-        }
-        return false;
-    }
-
-
-    checkWin(player) {
-        console.log(`Checking win for ${player.name}`);
-        
-        // Check horizontal
-        for (let row = 0; row < this.rows; row++) {
-            for (let col = 0; col <= this.cols - 4; col++) {
-                if (this.checkLine(row, col, 0, 1, player)) {
-                    console.log(`Horizontal win at row ${row}, starting column ${col}`);
-                    return true;
-                }
+    placeCircle(circle, col) {
+        for (let row = GRID_ROWS - 1; row >= 0; row--) {
+            if (this.grid[row][col] === null) {
+                this.grid[row][col] = circle;
+                circle.isPlaced = true;
+                return true;
             }
         }
-    
-        // Check vertical
-        for (let row = 0; row <= this.rows - 4; row++) {
-            for (let col = 0; col < this.cols; col++) {
-                if (this.checkLine(row, col, 1, 0, player)) {
-                    console.log(`Vertical win at column ${col}, starting row ${row}`);
-                    return true;
-                }
-            }
-        }
-    
-        // Check diagonal (top-left to bottom-right)
-        for (let row = 0; row <= this.rows - 4; row++) {
-            for (let col = 0; col <= this.cols - 4; col++) {
-                if (this.checkLine(row, col, 1, 1, player)) {
-                    console.log(`Diagonal win (top-left to bottom-right) starting at row ${row}, column ${col}`);
-                    return true;
-                }
-            }
-        }
-    
-        // Check diagonal (top-right to bottom-left)
-        for (let row = 0; row <= this.rows - 4; row++) {
-            for (let col = 3; col < this.cols; col++) {
-                if (this.checkLine(row, col, 1, -1, player)) {
-                    console.log(`Diagonal win (top-right to bottom-left) starting at row ${row}, column ${col}`);
-                    return true;
-                }
-            }
-        }
-    
-        console.log('No win detected');
-        return false;
-    }
-    
-    checkLine(row, col, rowDelta, colDelta, player) {
-        console.log(`Checking line starting at (${row}, ${col}), delta (${rowDelta}, ${colDelta})`);
-        let count = 0;
-        for (let i = 0; i < 4; i++) {
-            let currentRow = row + i * rowDelta;
-            let currentCol = col + i * colDelta;
-            if (currentRow < 0 || currentRow >= this.rows || currentCol < 0 || currentCol >= this.cols) {
-                console.log(`Cell (${currentRow}, ${currentCol}) is out of bounds`);
-                return false;
-            }
-            let cellContent = this.grid[currentRow][currentCol];
-            console.log(`Checking cell (${currentRow}, ${currentCol}): ${cellContent ? cellContent.name : 'empty'}, Type: ${typeof cellContent}`);
-            if (cellContent === player) {
-                count++;
-            } else {
-                break;
-            }
-        }
-        console.log(`Found ${count} matching pieces`);
-        return count === 4;
-    }
-
-    printBoard() {
-        console.log('Printing board state...');
-        console.log('Current Board State:');
-        for (let row = 0; row < this.rows; row++) {
-            let rowStr = '';
-            for (let col = 0; col < this.cols; col++) {
-                if (this.grid[row][col] === null) {
-                    rowStr += '- ';
-                } else if (this.grid[row][col] === player1) {
-                    rowStr += 'X ';
-                } else if (this.grid[row][col] === player2) {
-                    rowStr += 'O ';
-                } else {
-                    rowStr += '? '; // For unexpected values
-                }
-            }
-            console.log(`${row}: ${rowStr}`);
-        }
+        return false; // Column is full
     }
 }

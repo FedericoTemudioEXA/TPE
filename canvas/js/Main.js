@@ -168,18 +168,9 @@ function onMouseUp(e) {
                 row--;
             }
             
-            if (board.placeCircle(currentPlayer, col)) {
-                console.log(`Placed piece for ${currentPlayer.name} at column ${col}`);
-                board.printBoard();
-                
-                if (board.checkWin(currentPlayer)) {
-                    console.log(`${currentPlayer.name} wins!`);
-                    updateScore(currentPlayer, 1);
-                    alert(`${currentPlayer.name} wins!`);
-                    // You might want to reset the game here
-                } else {
+            if (board.placeCircle(LastClickedFigure, col)) {
                     switchPlayer();
-                }
+                
             }
         }, 500); // Adjust this delay as needed
     }

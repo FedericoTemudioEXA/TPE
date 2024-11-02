@@ -9,6 +9,9 @@ class Circle extends Figure{
         this.player = player;
     }
 
+    setPlaced(placed) {
+        this.isPlaced = placed;
+    }
 
     applyGravity() {
         if (!this.isAffectedByGravity) return;
